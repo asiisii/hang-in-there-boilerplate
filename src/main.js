@@ -196,7 +196,6 @@ function deleteMiniPoster(event){
   var getPosterId = parseInt(event.target.id);
   for (var i = 0; i < savedPosters.length; i++) {
     if(savedPosters[i].id === getPosterId){
-      console.log(savedPosters);
       savedPosters.splice(i,1);
     }
   }showSavedPosters();
