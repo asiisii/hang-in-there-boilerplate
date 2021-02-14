@@ -138,9 +138,6 @@ function getRandomPoster(){
   randomImage.src = images[getRandomIndex(images)];
   updateCurrentPoster();
 }
-function loadCurrentPoster(){
-  getRandomPoster();
-}
 function showSavedPosters(){
   savedPostersSection.classList.remove('hidden');
   savedPostersGrid.innerHTML = "";
@@ -176,14 +173,18 @@ function updateCurrentPoster() {
 }
 function newPoster(event) {
   event.preventDefault();
-  images.push(imgUrlInput.value);
-  titles.push(titleInput.value);
-  quotes.push(quoteInput.value);
-  randomImage.src = imgUrlInput.value;
-  randomTitle.innerText = titleInput.value;
-  randomQuote.innerHTML = quoteInput.value;
-  currentPoster = new Poster(imgUrlInput.value, titleInput.value, quoteInput.value);
-  takeMeBack();
+  if(imgUrlInput.value === "" || titleInput.value === "" || quoteInput.value === "" ){
+    alert("Please enter all the information for your poster!");
+  }else{
+    images.push(imgUrlInput.value);
+    titles.push(titleInput.value);
+    quotes.push(quoteInput.value);
+    randomImage.src = imgUrlInput.value;
+    randomTitle.innerText = titleInput.value;
+    randomQuote.innerHTML = quoteInput.value;
+    currentPoster = new Poster(imgUrlInput.value, titleInput.value, quoteInput.value);
+    takeMeBack();
+  }
 }
 function saveThisPoster() {
   if (!savedPosters.includes(currentPoster)) {
